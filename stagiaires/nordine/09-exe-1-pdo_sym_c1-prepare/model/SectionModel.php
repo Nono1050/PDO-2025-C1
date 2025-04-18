@@ -9,15 +9,19 @@
  * @return array|string
  */
 
-function getAllSectionsMenu(PDO $connectDB) : array|string
+function getAllSectionsMenu(PDO $connectDB): array|string
 {
     // var_dump($pdo);
     try {
         $request = $connectDB->query("
 SELECT id, section_title, section_slug 
-FROM section");
+FROM section$
+");
         // pas de résultat, on envoie l'erreur
-        if($request->rowCount() === 0) return "Pas encore de section";
+        if($request->rowCount() === 0) {
+            // 
+         return "Pas encore de section";
+        }
         // sinon (non visible, car return ligne précédente)
         return $request->fetchAll();
     }catch (Exception $e){

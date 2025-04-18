@@ -6,30 +6,28 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/style.css">
-    <title>Exercice</title>
+    <title>Accueil | laissez-nous un message</title>
 </head>
 <body>
-<h1>Exercice</h1>
+<h1>Accueil</h1>
 <h2>Laissez-nous un message</h2>
-<pre>
 <?php
 // si erreur lors de l'insertion
-if(isset($error2)):
+if(isset($error)):
     ?>
-    <h3 class="error"><?=$error2?></h3>
+    <h3 class="error"><?=$error?></h3>
 <?php
 endif;
 ?>
 <form action="" method="post">
-    <label for="surname">surname</label>
-    <input type="text" name="surname" id="surname" required>
+    <label for="name">Nom</label>
+    <input type="text" name="name" id="name" required>
     <label for="email">Email</label>
     <input type="email" name="email" id="email" required>
     <label for="message">Message</label>
     <textarea name="message" id="message" rows="10" required></textarea>
     <button type="submit">Envoyer</button>
 </form>
- 
 <?php
 // si le tableau est vide (pas d'articles)
 if(empty($articles)):
@@ -53,16 +51,15 @@ else:
     // tant qu'on a des messages
     foreach ($articles as $article):
     ?>
-    <h3><?=$article['email']?></h3>
-    <h3><?=$article['surname']?></h3>
+    <h3><?=$article['name']?></h3>
     <p><?=$article['message']?></p>
-    <p><?=$article['create_date']?></p>
+    <p><?=$article['created_at']?></p>
     <hr>
     <?php
     // fin de la boucle
     endforeach;
     ?>
- 
+
 </div>
 <?php
 endif;
